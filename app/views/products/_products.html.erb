@@ -1,0 +1,31 @@
+<div class="py-3 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <% products.each_slice(3) do |slice| %>
+        <div class="w-100 d-none d-md-block"></div>
+        <% slice.each do |product| %>
+          <div class="col">
+            <div class="card shadow-sm rounded h-100">
+              <svg width="100%" height="0">
+                <%= link_to product_path(1) do %>
+                <% image_tag Faker::Placeholdit.image(size: "640x480", format: 'jpg', background_color: 'cccccc') %>
+              <% end %>
+              </svg>
+              <div class="card-body d-flex flex-column">
+                <p class="card-text">
+                  <h3><%= link_to Faker::Hacker.noun.titleize, product_path(1) %></h3>
+                  <p><%= simple_format(truncate(Faker::Hacker.say_something_smart, length: 90)) %></p>
+                  <p class="lead"><%= number_to_currency Faker::Number.decimal(l_digits: 2, r_digits: 2)%></p>
+                </p>
+                <%= link_to "#", class: "btn btn-primary align-self-end" do %>
+                  <i class="bi bi-cart-check"></i>
+                  Dodaj do koszyka
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
