@@ -60,6 +60,7 @@ gem "ransack"
 gem "kaminari"
 gem "rails-i18n"
 gem "statesman"
+gem "image_processing", ">= 1.2"
 
 
 group :development, :test do

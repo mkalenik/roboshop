@@ -50,9 +50,9 @@
                 </a>
                 <div class="collapse show" id="home-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <% (1..9).each do |category| %>
+                    <% Category.all.each do |category| %>
                       <li class="nav-item">
-                        <%= link_to "Kategoria#{category}", category_path(category), class: "align-text-bottom"  %>
+                        <%= link_to category.name, category_path(category), class: "align-text-bottom"  %>
                       </li>
                     <% end %>
                   </ul>
