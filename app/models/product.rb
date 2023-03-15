@@ -6,5 +6,7 @@ class Product < ApplicationRecord
   validates :price, numericality: { greater_than: 0.0 }
   validates :category, presence: true
 
-  mount_uploader :photo, ProductPhotoUploader
+  has_one_attached :photo do |attachable|
+    attachable.variant :thumb, resize_to_limit: [320, 240]
+  end
 end
