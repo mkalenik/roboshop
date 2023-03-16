@@ -20,26 +20,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<%= root_path %>">Start</a>
+              <a class="nav-link <% if [params[:controller], params[:action]] == ["products", "index"] %>active<% end %>" aria-current="page" href="<%= root_path %>">Start</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%= privacy_path %>">Polityka prywatności</a>
+              <a class="nav-link <% if [params[:controller], params[:action]] == ["products", "privacy"] %>active<% end %>" aria-current="page" href="<%= privacy_path %>">Polityka prywatności</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%= terms_path %>">Regulamin</a>
+              <a class="nav-link <% if [params[:controller], params[:action]] == ["products", "terms"] %>active<% end %>" aria-current="page" href="<%= terms_path %>">Regulamin</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%= shipping_path %>">Dostawa i płatności</a>
+              <a class="nav-link<% if [params[:controller], params[:action]] == ["products", "shipping"] %>active<% end %>" aria-current="page" href="<%= shipping_path %>">Dostawa i płatności</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%= about_path %>">O sklepie</a>
+              <a class="nav-link<% if [params[:controller], params[:action]] == ["products", "about"] %>active<% end %>" aria-current="page" href="<%= about_path %>">O sklepie</a>
             </li>
         </div>
       </div>
     </nav>
 
-    <div class="container-fluid">
-      <div class="row">
+    <div class="container-fluid p-0">
+      <div class="d-flex">
         <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
             <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
@@ -50,7 +50,7 @@
             <li class="nav-item">
               <% Category.all.each do |category| %>
                 <li class="nav-item">
-                  <%= link_to category.name, category_path(category), class: "align-text-bottom"  %>
+                  <%= link_to category.name, category_path(category), class: "nav-link #{'active' if @category&.id == category.id} #{'link-dark' if @category&.id != category.id}"  %>
                 </li>
               <% end %>
             </li>

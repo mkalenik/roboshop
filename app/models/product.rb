@@ -13,4 +13,13 @@ class Product < ApplicationRecord
   def to_param
     "#{id}-#{name}".parameterize
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["category_id", "created_at", "description", "id", "long_description", "name", "photo", "price", "updated_at"]
+  end
+
+
+  def self.ransackable_associations(auth_object = nil)
+    ["category", "photo_attachment", "photo_blob"]
+  end
 end
