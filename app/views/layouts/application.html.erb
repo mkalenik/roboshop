@@ -13,26 +13,26 @@
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">RoboShop</a>
+        <a class="navbar-brand" href="<%= root_path %>">RoboShop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Start</a>
+              <a class="nav-link active" aria-current="page" href="<%= root_path %>">Start</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Polityka prywatności</a>
+              <a class="nav-link" href="<%= privacy_path %>">Polityka prywatności</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Regulamin</a>
+              <a class="nav-link" href="<%= terms_path %>">Regulamin</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Dostawa i płatności</a>
+              <a class="nav-link" href="<%= shipping_path %>">Dostawa i płatności</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">O sklepie</a>
+              <a class="nav-link" href="<%= about_path %>">O sklepie</a>
             </li>
         </div>
       </div>
@@ -40,27 +40,22 @@
 
     <div class="container-fluid">
       <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-          <div class="position-sticky pt-3 sidebar-sticky">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                  <span data-feather="home" class="align-text-bottom"></span>
-                  Kategorie
-                </a>
-                <div class="collapse show" id="home-collapse">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <% Category.all.each do |category| %>
-                      <li class="nav-item">
-                        <%= link_to category.name, category_path(category), class: "align-text-bottom"  %>
-                      </li>
-                    <% end %>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-4">Kategorie</span>
+          </a>
+          <hr>
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <% Category.all.each do |category| %>
+                <li class="nav-item">
+                  <%= link_to category.name, category_path(category), class: "align-text-bottom"  %>
+                </li>
+              <% end %>
+            </li>
+          </ul>
+        </div>
         <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <%= yield %>
         </div>

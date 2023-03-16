@@ -16,7 +16,11 @@
       <div class="col-auto d-none d-lg-block">
         <svg>
           <%= link_to product_path(1) do %>
-            <% image_tag(@product.photo, class: "img-responsive")  %>
+            <% if @product.photo.attached? %>
+              <% image_tag(@product.photo, class: "img-responsive") %>
+            <% else %>
+              <%= image_tag "no-image.png" %>
+            <% end %>
           <% end %>
         </svg>
       </div>
