@@ -9,4 +9,8 @@ class Product < ApplicationRecord
   has_one_attached :photo do |attachable|
     attachable.variant :thumb, resize_to_limit: [320, 240]
   end
+
+  def to_param
+    "#{id}-#{name}".parameterize
+  end
 end

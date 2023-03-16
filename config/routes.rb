@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get 'o-sklepie', to: "static#about", as: :about
  
   root to: "products#index"
-  resources :categories, only: [:show]
-  resources :products, only: [:index, :show]
+  resources :categories, only: [:show], path: "kategoria"
+  resources :products, only: [:index, :show], path: "produkt"
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
