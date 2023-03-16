@@ -6,12 +6,16 @@
 </p>
 
 <div class="search-form ">
-  <%= search_form_for [:admin, @q] do |f| %>
-    <p>
-      <%= f.text_field :name_or_description_or_long_description_cont, placeholder: "Szukaj tekstu" %>
-      <%= f.text_field :price_gt, placeholder: "Cena >" %>
-      <%= f.submit "Szukaj", class: "btn btn-success btn-sm" %>
-    </p>
+  <%= search_form_for [:admin, @q], class: "row g-3"  do |f| %>
+    <div class="col-auto">
+      <%= f.text_field :name_or_description_or_long_description_cont, placeholder: "Szukaj tekstu", class: "form-control" %>
+    </div>
+    <div class="col-auto">
+      <%= f.text_field :price_gt, placeholder: "Cena >", class: "form-control" %>
+    </div>
+    <div class="col-auto">
+      <%= f.submit "Szukaj", class: "btn btn-success" %>
+    </div>
   <% end %>
 </div>
 
