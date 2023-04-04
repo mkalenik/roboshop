@@ -5,7 +5,7 @@
   <% end %>
 </p>
 
-<div class="search-form ">
+<div class="search-form">
   <%= search_form_for [:admin, @q], class: "row g-3"  do |f| %>
     <div class="col-auto">
       <%= f.text_field :name_or_description_or_long_description_cont, placeholder: "Szukaj tekstu", class: "form-control" %>
